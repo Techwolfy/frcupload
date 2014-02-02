@@ -1,5 +1,5 @@
 @echo off
-echo FRCUpload v1.2 Copyright (c) 2014 Techwolf
+echo FRCUpload v1.3 Copyright (c) 2014 Techwolf
 echo.
 
 if exist ftpcommand.dat (
@@ -7,6 +7,7 @@ echo Last upload did not complete successfully, cleaning up.
 del ftpcommand.dat
 )
 
+set Outfile=SimpleTemplate
 set Workspace=%UserProfile%\Documents\WindRiverWorkspace
 if not exist %workspace% (
 echo Workspace not found! Press any key to exit.
@@ -25,8 +26,8 @@ echo admin>> ftpcommand.dat
 echo cd /ni-rt/system/>> ftpcommand.dat
 echo delete FRC_UserProgram.out>> ftpcommand.dat
 echo bin>> ftpcommand.dat
-echo put %workspace%\%ProjectName%\PPC603gnu\SimpleTemplate\Debug\SimpleTemplate.out>> ftpcommand.dat
-echo rename SimpleTemplate.out FRC_UserProgram.out>> ftpcommand.dat
+echo put %workspace%\%ProjectName%\PPC603gnu\%Outfile%\Debug\%Outfile%.out>> ftpcommand.dat
+echo rename %Outfile%.out FRC_UserProgram.out>> ftpcommand.dat
 echo quit>> ftpcommand.dat
 
 echo Uploading...
