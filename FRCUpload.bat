@@ -1,5 +1,5 @@
 @echo off
-echo FRCUpload v1.3 Copyright (c) 2014 Techwolf
+echo FRCUpload v1.4 Copyright (c) 2014 Techwolf
 echo.
 
 if exist ftpcommand.dat (
@@ -7,6 +7,7 @@ echo Last upload did not complete successfully, cleaning up.
 del ftpcommand.dat
 )
 
+set RobotIP=10.6.91.2
 set Outfile=SimpleTemplate
 set Workspace=%UserProfile%\Documents\WindRiverWorkspace
 if not exist %workspace% (
@@ -31,7 +32,7 @@ echo rename %Outfile%.out FRC_UserProgram.out>> ftpcommand.dat
 echo quit>> ftpcommand.dat
 
 echo Uploading...
-ftp -n -s:ftpcommand.dat 10.6.91.2
+ftp -n -s:ftpcommand.dat %RobotIP%
 
 echo Cleaning up...
 del ftpcommand.dat
